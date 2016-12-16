@@ -96,6 +96,11 @@ class Slider extends React.Component {
     }
   }
 
+  componentWillUnmount() {
+      this.removeEvents('touch');
+      this.removeEvents('mouse')
+  }
+
   onChange(state) {
     const props = this.props;
     const isNotControlled = !('value' in props);
