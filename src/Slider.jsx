@@ -96,10 +96,12 @@ class Slider extends React.Component {
     }
   }
 
-  componentWillUnmount() {
-      this.removeEvents('touch');
-      this.removeEvents('mouse')
-  }
+    componentWillUnmount() {
+        if (typeof this.onTouchMoveListener !== 'undefined') this.onTouchMoveListener.remove();
+        if (typeof this.onTouchUpListener !== 'undefined') this.onTouchUpListener.remove();
+        if (typeof this.onMouseMoveListener !== 'undefined') this.onMouseMoveListener.remove();
+        if (typeof this.onMouseUpListener !== 'undefined') this.onMouseUpListener.remove();
+    }
 
   onChange(state) {
     const props = this.props;
